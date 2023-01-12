@@ -1,4 +1,4 @@
-THis is the instructions file for the AI Friday.
+THis is the instructions file for the Virtual Assistant Friday.
 First you may have to install a few modules to get the program running.They are :-
 
 pyttsx3: pip install pyttsx3
