@@ -5,6 +5,8 @@
 # pip install wikipedia
 # pip install pandas
 # pip install PyPDF2
+# pip install pytube
+# pip install pywhatkit
 import pyttsx3
 import speech_recognition as sr
 import datetime
