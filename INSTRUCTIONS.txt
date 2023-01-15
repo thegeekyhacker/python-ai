@@ -9,7 +9,8 @@ wikipedia : pip install wikipedia
 pandas :  pip install pandas
 PyPDF2 : pip install PyPDF2
 pyaudio : pip install PyAudio-0.2.11-cp37-cp37m-win32
-
+pytube : pip install pytube
+pywhatkit : pip install pywhatkit
 List Of Commands : 
 Note : (- : means anything can come there)
 - wikpedia : will search and read first two lines of wikipedia for whatever in place of '-'.
