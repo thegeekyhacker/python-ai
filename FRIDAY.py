@@ -21,7 +21,8 @@ import pandas as pd
 import mysql.connector as sqltor
 from PyPDF2.pdf import PdfFileReader
 import pyaudio
-
+import pytube
+import pywhatkit  as kit
 
 
 edict = {'Utkarsh':'haethutkarsh@gmail.com'}
@@ -81,10 +82,12 @@ def sendEmail(to, content):
     server.sendmail("haethutkarsh@gmail.com", to, content)
     server.close()
 def YouTube(search):
-    html = urllib.request.urlopen("https://www.youtube.com/results?search_query=" + search)
-    video_ids = re.findall(r"watch\?v=(\S{11})", html.read().decode())
-    url = "https://www.youtube.com/watch?v=" + video_ids[0]
-    webbrowser.get(chrome_path).open_new_tab(url)
+    s = pytube.Search(search)
+    rvideo = s.results[0].video_id
+    video_url = "https://www.youtube.com/watch?v="+rvideo
+    webbrowser.open_new_tab(video_url)
+def Whatsapp(to,content):
+    kit.sendwhatmsg_instantly(to,content)
 if __name__ == "__main__":
     wishMe()
     while True:
@@ -311,7 +314,15 @@ if __name__ == "__main__":
             email = email + "@gmail.com"
             comm = f"insert into birthday values({sno},'{name}','{bday2}','{messg}','{email}')"
             cursor.execute(comm)
-            con.commit()                  
+            con.commit()     
+        elif "send whatsapp" in query:
+            print("Tell me the number you want to send the message : ")
+            speak("Tell me the number you want to send the message : ")
+            num = takecommand()
+            print("What should I say?")
+            speak("What should I say?")
+            content = takecommand()
+            Whatsapp(num,content)             
         elif "play" in query:
             query = query.replace("play","")
             query = query.replace(" ","")
